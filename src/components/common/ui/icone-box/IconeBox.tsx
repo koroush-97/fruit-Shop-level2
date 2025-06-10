@@ -6,7 +6,10 @@ interface props {
   link?: string;
   title?: string;
   hideTitleOnMobile?: boolean;
-  badge: number;
+  badge?: number;
+  titleClassname?: string;
+  path?: number;
+  linkclassname?: string;
 }
 
 export function IconeBox({
@@ -16,33 +19,38 @@ export function IconeBox({
   title,
   hideTitleOnMobile = false,
   badge = 0,
+  titleClassname = " text-medium text-gray-500 font-lato",
+  path = 0,
+  linkclassname = "",
 }: props) {
+  let span = [];
+  for (let i = 1; i <= path; i++) {
+    span.push(<span className={`path${i}`}></span>);
+  }
+
   return (
-    <>
+    <Link className={linkclassname} href={link ?? "#"}>
       {badge ? (
         <div className="relative ">
           <span className="absolute -top-[10px] -right-[10px] w-[20px] h-[20px] bg-green-200 rounded-full flex justify-center items-center text-white text-xsmall">
             {badge}
           </span>
-          <Link href={link ?? "#"}>
-            <i className={`${icon} text-[${size}px]`}></i>
-          </Link>
+
+          <i className={`${icon} text-[${size}px]`}>{span}</i>
         </div>
       ) : (
-        <Link href={link ?? "#"}>
-          <i className={`${icon} text-[${size}px]`}></i>
-        </Link>
+        <i className={`${icon} text-[${size}px]`}>{span}</i>
       )}
 
       {title && (
         <div
           className={`${
             hideTitleOnMobile ? "hidden xl:inline-block" : "inline-block"
-          } text-medium text-gray-500 font-lato`}
+          } ${titleClassname}`}
         >
           {title}
         </div>
       )}
-    </>
+    </Link>
   );
 }

@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./header/Header";
-import Footer from "./footer/Footer";
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 interface Props {
   children: React.ReactNode;
 }
 
-export default function Layout({ children }: Props) {
+export function Layout({ children }: Props) {
   return (
     <>
       <Header />

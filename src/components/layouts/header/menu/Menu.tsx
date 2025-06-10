@@ -1,4 +1,7 @@
 import { IconeBox } from "@/components/common";
+import { browserCategoryMock } from "@/mock/browserCategory";
+import { menuMock } from "@/mock/menu";
+
 import Link from "next/link";
 
 export function Menu() {
@@ -21,7 +24,7 @@ export function Menu() {
         <IconeBox icon={"icon-angle-small-down"} size={24} />
         <div
           id="all_categories_box"
-          className=" absolute z-20 bg-white left-0 top-16 w-[500px] rounded-[5px] border-[1px] border-green-300 p-[30px] hover:cursor-default"
+          className=" hidden absolute z-20 bg-white left-0 top-16 w-[500px] rounded-[5px] border-[1px] border-green-300 p-[30px] hover:cursor-default"
         >
           <div
             id="all_cat_inner_box"
@@ -38,141 +41,23 @@ export function Menu() {
                 "flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
               }
             />
-            <Link
-              href="#"
-              className="flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
-            >
-              <i className="icon-drinks-1 text-[30px]">
-                <span className="path1" />
-                <span className="path2" />
-                <span className="path3" />
-                <span className="path4" />
-                <span className="path5" />
-              </i>
-              <div className="text-heading-sm text-blue-300">
-                Wines &amp; Drinks
-              </div>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
-            >
-              <i className="icon-dress-1 text-[30px]">
-                <span className="path1" />
-                <span className="path2" />
-                <span className="path3" />
-                <span className="path4" />
-              </i>
-              <div className="text-heading-sm text-blue-300">
-                Clothing &amp; beauty
-              </div>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
-            >
-              <i className="icon-crab-1 text-[30px]">
-                <span className="path1" />
-                <span className="path2" />
-                <span className="path3" />
-                <span className="path4" />
-                <span className="path5" />
-                <span className="path6" />
-                <span className="path7" />
-                <span className="path8" />
-                <span className="path9" />
-              </i>
-              <div className="text-heading-sm text-blue-300">Fresh Seafood</div>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
-            >
-              <i className="icon-pet-food-1 text-[30px]">
-                <span className="path1" />
-                <span className="path2" />
-                <span className="path3" />
-                <span className="path4" />
-                <span className="path5" />
-                <span className="path6" />
-                <span className="path7" />
-                <span className="path8" />
-              </i>
-              <div className="text-heading-sm text-blue-300">
-                Pet Foods &amp; Toy
-              </div>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
-            >
-              <i className="icon-sweet-1 text-[30px]">
-                <span className="path1" />
-                <span className="path2" />
-                <span className="path3" />
-                <span className="path4" />
-                <span className="path5" />
-                <span className="path6" />
-                <span className="path7" />
-              </i>
-              <div className="text-heading-sm text-blue-300">Fast food</div>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
-            >
-              <i className="icon-dairy-products-1 text-[30px]">
-                <span className="path1" />
-                <span className="path2" />
-                <span className="path3" />
-                <span className="path4" />
-                <span className="path5" />
-              </i>
-              <div className="text-heading-sm text-blue-300">
-                Baking material
-              </div>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
-            >
-              <i className="icon-grocery-1 text-[30px]">
-                <span className="path1" />
-                <span className="path2" />
-                <span className="path3" />
-                <span className="path4" />
-                <span className="path5" />
-                <span className="path6" />
-                <span className="path7" />
-              </i>
-              <div className="text-heading-sm text-blue-300">Vegetables</div>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
-            >
-              <i className="icon-fruit-1 text-[30px]">
-                <span className="path1" />
-                <span className="path2" />
-                <span className="path3" />
-              </i>
-              <div className="text-heading-sm text-blue-300">Fresh Fruit</div>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
-            >
-              <span className="icon-milk-products-1 text-[30px]">
-                <span className="path1" />
-                <span className="path2" />
-                <span className="path3" />
-                <span className="path4" />
-                <span className="path5" />
-              </span>
-              <div className="text-heading-sm text-blue-300">
-                Bread and Juice
-              </div>
-            </Link>
+
+            {browserCategoryMock.map((item, index) => {
+              return (
+                <IconeBox
+                  key={index}
+                  icon={item.icon}
+                  size={30}
+                  title={item.title}
+                  titleClassname={"text-heading-sm text-blue-300"}
+                  linkclassname={
+                    "flex items-center gap-3.5 rounded-[5px] lg:border-[1px] lg:border-gray-300 py-2.5 basis-[calc(50%-8px)] justify-start pl-4 lg:hover:border-green-300 cursor-pointer"
+                  }
+                  path={item.iconPath}
+                />
+              );
+            })}
+
             <div
               id="more_categories"
               className="cursor-pointer flex gap-4 items-center justify-center w-full mt-[17px]"
@@ -187,7 +72,21 @@ export function Menu() {
       </div>
       <nav id="main_menu">
         <ul className="flex flex-col lg:flex-row items-start lg:items-center text-heading6 lg:text-heading-sm 2xl:text-heading6 gap-[32px] mt-[32px] lg:mt-0 lg:gap-3 xl:gap-5 2xl:gap-10">
-          <li>
+          {menuMock.map((item, index) => {
+            return (
+              <li key={index}>
+                {item.icon ? (
+                  <IconeBox {...item} size={24} titleClassname="text-center" />
+                ) : (
+                  <Link href={item.icon} className="flex items-center gap-1">
+                    {item.title}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
+
+          {/* <li>
             <Link href="#" className="flex flex-row gap-2 items-center">
               <i className="icon-flame text-[24px]" />
               <div className="text-heading6 lg:text-heading-sm xl:text-heading6">
@@ -209,7 +108,7 @@ export function Menu() {
             <Link href="#" className="flex flex-row">
               Vegetables
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </>

@@ -28,8 +28,13 @@ export function IconeBox({
     span.push(<span className={`path${i}`}></span>);
   }
 
+  // TODO load menu data from api
+
   return (
-    <Link className={linkclassname} href={link ?? "#"}>
+    <Link
+      className={` flex items-center ${linkclassname} cursor-pointer`}
+      href={link ?? "#"}
+    >
       {badge ? (
         <div className="relative ">
           <span className="absolute -top-[10px] -right-[10px] w-[20px] h-[20px] bg-green-200 rounded-full flex justify-center items-center text-white text-xsmall">
@@ -44,7 +49,7 @@ export function IconeBox({
 
       {title && (
         <div
-          className={`${
+          className={` ml-1 ${
             hideTitleOnMobile ? "hidden xl:inline-block" : "inline-block"
           } ${titleClassname}`}
         >

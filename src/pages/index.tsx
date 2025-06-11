@@ -1,5 +1,5 @@
 import { Banner, Section } from "@/components";
-import { FeaturedCategories } from "@/components";
+import { FeaturedCategories, MiniProductSlider } from "@/components";
 
 export default function Home() {
   return (
@@ -18,6 +18,13 @@ export default function Home() {
           <h2 className="text-heading3 text-blue-300"> Featured Categories </h2>
         </div>
         <FeaturedCategories />
+      </Section>
+
+      <Section>
+        <div className="hidden sm:flex mb-[50px]">
+          <h2 className="text-heading3 text-blue-300"> Featured Categories </h2>
+        </div>
+        <MiniProductSlider />
       </Section>
     </>
   );

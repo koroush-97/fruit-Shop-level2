@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import "@/styles/icons.css";
 import "swiper/css";
 import "swiper/css/autoplay";
+import "swiper/css/navigation";
 
 import { Layout } from "@/components";
 import { Lato, Quicksand } from "next/font/google";

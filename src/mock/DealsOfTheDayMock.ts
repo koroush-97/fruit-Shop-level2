@@ -1,42 +1,42 @@
- export const DealsOfTheDaysMock = [
-    {
-        title: "Seeds of Change Organic Quinoa, Brown, & Red Rice",
-        image : "/assets/images/deals/lettuce.png",
-        rate : 4.0,
-        weight : 500,
-        unit: 'gram',
-        price : 22222,
-        sale_price: 111 ,
-        dead_line: '2025-08-12 00:00:00'
-    },
-    {
-        title: "Seeds of Change Organic Quinoa, Brown, & Red Rice",
-        image : "/assets/images/deals/lettuce.png",
-        rate : 4.0,
-        weight : 500,
-        unit: 'gram',
-        price : 22222,
-        sale_price: 111 ,
-        dead_line: '2025-08-12 00:00:00'
-    },
-    {
-        title: "Seeds of Change Organic Quinoa, Brown, & Red Rice",
-        image : "/assets/images/deals/lettuce.png",
-        rate : 4.0,
-        weight : 500,
-        unit: 'gram',
-        price : 22222,
-        sale_price: 111 ,
-        dead_line: '2025-08-12 00:00:00'
-    },
-    {
-        title: "Seeds of Change Organic Quinoa, Brown, & Red Rice",
-        image : "/assets/images/deals/lettuce.png",
-        rate : 4.0,
-        weight : 500,
-        unit: 'gram',
-        price : 22222,
-        sale_price: 111 ,
-        dead_line: '2025-08-12 00:00:00'
-    },
- ]
+export const DealsOfTheDaysMock = [
+  {
+    title: "Seeds of Change Organic Quinoa, Brown, & Red Rice",
+    image: "/assets/images/deals/lettuce.png",
+    rate: 3.0,
+    weight: 500,
+    unit: "gram",
+    price: 40000,
+    sale_price: 25000,
+    dead_line: "2025-12-12 00:00:00",
+  },
+  {
+    title: "Seeds of Change Organic Quinoa, Brown, & Red Rice",
+    image: "/assets/images/deals/lettuce.png",
+    rate: 4.0,
+    weight: 500,
+    unit: "gram",
+    price: 20000,
+    sale_price: 3000,
+    dead_line: "2025-09-12 00:00:00",
+  },
+  {
+    title: "Seeds of Change Organic Quinoa, Brown, & Red Rice",
+    image: "/assets/images/deals/lettuce.png",
+    rate: 4.0,
+    weight: 500,
+    unit: "gram",
+    price: 4000,
+    sale_price: 100,
+    dead_line: "2025-08-12 00:00:00",
+  },
+  {
+    title: "Seeds of Change Organic Quinoa, Brown, & Red Rice",
+    image: "/assets/images/deals/lettuce.png",
+    rate: 2.0,
+    weight: 500,
+    unit: "gram",
+    price: 15000,
+    sale_price: 200,
+    dead_line: "2025-11-12 00:00:00",
+  },
+];

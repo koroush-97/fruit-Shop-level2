@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { IconeBox, ImageView } from "@/components/common";
+import { useState } from "react";
+import { IconeBox } from "@/components/common";
+import { useOverlay } from "@/hooks/use-overlay";
 import { Logo } from "@/components/common";
 import Link from "next/link";
 import { SearchForm } from "./search-form";
@@ -16,17 +17,13 @@ export function Header() {
   const menuBodyClickHandler = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
-  useEffect(() => {
-    const clickHandler = () => {
+
+  useOverlay({
+    onClick: (): void => {
       setShowMobileMenu(false);
-    };
-
-    document.addEventListener("click", clickHandler);
-
-    return () => {
-      document.removeEventListener("click", clickHandler);
-    };
-  }, []);
+    },
+    isOverflowHidden: showMobileMenu,
+  });
 
   return (
     <header className="mb-[33px]">

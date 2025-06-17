@@ -1,5 +1,6 @@
 import { IconeBox } from "@/components/common";
 import { useMenu } from "@/hooks/use-menu";
+import { useOverlay } from "@/hooks/use-overlay";
 import { EntityType, MenuItemType } from "@/types";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -21,17 +22,11 @@ export function Menu() {
     e.stopPropagation();
   };
 
-  useEffect(() => {
-    const clickHandler = () => {
+  useOverlay({
+    onClick: (): void => {
       setShowCategoryMenu(false);
-    };
-
-    document.addEventListener("click", clickHandler);
-
-    return () => {
-      document.removeEventListener("click", clickHandler);
-    };
-  }, []);
+    },
+  });
 
   return (
     <>

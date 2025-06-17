@@ -42,10 +42,14 @@ export function IconeBox({
               {badge}
             </span>
 
-            <i className={`${icon} text-[${size}px]`}>{span}</i>
+            <i style={{ fontSize: `${size}px` }} className={`${icon} `}>
+              {span}
+            </i>
           </div>
         ) : (
-          <i className={`${icon} text-[${size}px]`}>{span}</i>
+          <i style={{ fontSize: `${size}px` }} className={`${icon} `}>
+            {span}
+          </i>
         )}
 
         {title && (

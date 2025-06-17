@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { IconeBox, ImageView } from "@/components/common";
 import { Logo } from "@/components/common";
 import Link from "next/link";
@@ -6,6 +6,28 @@ import { SearchForm } from "./search-form";
 import { Menu } from "./menu";
 
 export function Header() {
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+
+  const menuBtnClickHandler = (e: React.MouseEvent): void => {
+    e.stopPropagation();
+    setShowMobileMenu((prevState) => !prevState);
+  };
+
+  const menuBodyClickHandler = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+  useEffect(() => {
+    const clickHandler = () => {
+      setShowMobileMenu(false);
+    };
+
+    document.addEventListener("click", clickHandler);
+
+    return () => {
+      document.removeEventListener("click", clickHandler);
+    };
+  }, []);
+
   return (
     <header className="mb-[33px]">
       <div className="container flex items-center justify-between py-4 md:py-6 xl:py-8">
@@ -41,6 +63,7 @@ export function Header() {
           </li>
         </ul>
         <button
+          onClick={menuBtnClickHandler}
           id="menu_btn"
           className="flex flex-col justify-between py-[4px] lg:hidden w-[24px] h-[24px]"
         >
@@ -50,7 +73,14 @@ export function Header() {
         </button>
       </div>
       <div className="border-gray-200 border-y h">
-        <div className="container transition-all w-4/5 rounded-[24px] lg:rounded-[0px] lg:w-auto flex absolute top-0 bottom-0 -left-[100%] lg:static flex-col lg:flex-row justify-start lg:justify-between items-start pt-[16px] pl-[24px] lg:py-[13px] lg:items-center h-[100vh] bg-white lg:h-[70px] mobile-menu z-50">
+        <div
+          onClick={menuBodyClickHandler}
+          className={`${
+            showMobileMenu
+              ? "left-0 fixed overflow-y-scroll"
+              : "-left-[100%] absolute"
+          } container transition-all w-4/5 rounded-[24px] lg:rounded-[0px] lg:w-auto flex  top-0 bottom-0   lg:static flex-col lg:flex-row justify-start lg:justify-between items-start pt-[16px] pl-[24px] lg:py-[13px] lg:items-center h-[100vh] bg-white lg:h-[70px] mobile-menu z-50 `}
+        >
           <Menu />
 
           <div className="hidden lg:flex items-center shrink-0 gap-3">

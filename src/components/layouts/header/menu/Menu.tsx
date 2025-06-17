@@ -1,84 +1,66 @@
-import { getMenuApiCall } from "@/api/Menu";
 import { IconeBox } from "@/components/common";
-import { browserCategoryMock } from "@/mock/browserCategory";
-import { menuMock } from "@/mock/menu";
-import { EntityType, MenuItemType, MenuType, PopulateType } from "@/types";
-import { useQuery } from "@tanstack/react-query";
-
+import { useMenu } from "@/hooks/use-menu";
+import { EntityType, MenuItemType } from "@/types";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export function Menu() {
-  const { data: menuData } = useQuery({
-    queryKey: [getMenuApiCall.name],
-    queryFn: () => getMenuApiCall(),
-  });
+  const [showCategoryMenu, setShowCategoryMenu] = useState<boolean>(false);
 
-  let mainMenuItems: null | PopulateType<MenuItemType> = null;
-  let categoryMenuItems: null | PopulateType<MenuItemType> = null;
+  const { data: mainMenuItems } = useMenu({ position: "main_menu" });
+  const { data: categoryMenuItems } = useMenu({ position: "brows-category" });
 
-  if (menuData) {
-    const findMenu = menuData.data.filter(
-      (item: EntityType<MenuType>) => item.attributes.position === "main_menu"
-    );
+  const categoriesMenuClickHandler = (
+    e: React.MouseEvent<HTMLDivElement>
+  ): void => {
+    e.stopPropagation();
+    setShowCategoryMenu((prevState) => !prevState);
+  };
 
-    if (findMenu.length > 0) {
-      mainMenuItems = findMenu[0].attributes.menu_items;
-      mainMenuItems.data.sort(
-        (a: EntityType<MenuItemType>, b: EntityType<MenuItemType>) => {
-          if (a.attributes.rank < b.attributes.rank) return -1;
+  const categoryBodyClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
 
-          if (a.attributes.rank > b.attributes.rank) return 1;
+  useEffect(() => {
+    const clickHandler = () => {
+      setShowCategoryMenu(false);
+    };
 
-          return 0;
-        }
-      );
-    }
-  }
+    document.addEventListener("click", clickHandler);
 
-  if (menuData) {
-    const findCategoryMenu = menuData.data.filter(
-      (item: EntityType<MenuType>) =>
-        item.attributes.position === "brows-category"
-    );
-
-    if (findCategoryMenu.length > 0) {
-      categoryMenuItems = findCategoryMenu[0].attributes.menu_items;
-      categoryMenuItems.data.sort(
-        (a: EntityType<MenuItemType>, b: EntityType<MenuItemType>) => {
-          if (a.attributes.rank < b.attributes.rank) return -1;
-
-          if (a.attributes.rank > b.attributes.rank) return 1;
-
-          return 0;
-        }
-      );
-    }
-  }
+    return () => {
+      document.removeEventListener("click", clickHandler);
+    };
+  }, []);
 
   return (
     <>
-      <div
-        id="all_categories"
-        className="flex relative cursor-pointer bg-green-200 gap-2.5 text-white px-4 py-3 rounded-[5px] items-center"
-      >
-        <IconeBox icon={"icon-apps text-[24px]"} size={24} />
+      <div id="all_categories" className="relative">
+        <div
+          onClick={categoriesMenuClickHandler}
+          className="inline-flex  cursor-pointer bg-green-200 gap-2.5 text-white px-4 py-3 rounded-[5px] items-center"
+        >
+          <IconeBox icon={"icon-apps text-[24px]"} size={24} />
+          <IconeBox
+            icon={"text-medium"}
+            size={24}
+            title={"Browse All Categories"}
+            link={"#"}
+            titleClassname="text-medium"
+          />
+          <IconeBox icon={"icon-angle-small-down"} size={24} />
+        </div>
 
-        <IconeBox
-          icon={"text-medium"}
-          size={24}
-          title={"Browse All Categories"}
-          link={"#"}
-          titleClassname="text-medium"
-        />
-
-        <IconeBox icon={"icon-angle-small-down"} size={24} />
         <div
           id="all_categories_box"
-          className="  absolute z-20 bg-white left-0 top-16 w-[500px] rounded-[5px] border-[1px] border-green-300 p-[30px] hover:cursor-default"
+          onClick={categoryBodyClickHandler}
+          className={`${
+            showCategoryMenu ? "flex" : "hidden"
+          } lg:absolute z-20 bg-white left-0 top-16 w-full  md:w-[500px] rounded-[5px] lg:border-[1px] border-green-300 lg:p-[30px] hover:cursor-default`}
         >
           <div
             id="all_cat_inner_box"
-            className="flex flex-wrap justify-between gap-y-[15px]"
+            className=" flex flex-wrap justify-between w-full gap-y-[15px]"
           >
             {categoryMenuItems &&
               categoryMenuItems.data.map(
@@ -102,7 +84,7 @@ export function Menu() {
 
             <div
               id="more_categories"
-              className="cursor-pointer flex gap-4 items-center justify-center w-full mt-[17px]"
+              className="cursor-pointer flex gap-4 items-center lg:text-center lg:justify-center w-full mt-[17px]"
             >
               <i className="icon-add text-[24px]" />
               <div className="text-heading-sm text-blue-300">
@@ -112,6 +94,7 @@ export function Menu() {
           </div>
         </div>
       </div>
+
       <nav id="main_menu">
         <ul className="flex flex-col lg:flex-row items-start lg:items-center text-heading6 lg:text-heading-sm 2xl:text-heading6 gap-[32px] mt-[32px] lg:mt-0 lg:gap-3 xl:gap-5 2xl:gap-10">
           {mainMenuItems &&
